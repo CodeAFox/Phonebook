@@ -35,13 +35,21 @@ public class ContactInfo
 
   public boolean equals(Object obj)
   {
-    //    placeholder
-    return true;
+    if(obj == this)
+    {
+      return true;
+    }
+    if(obj == null || obj.getClass() != this.getClass())
+    {
+      return false;
+    }
+
+    ContactInfo other = (ContactInfo) obj;
+    return other.type.equals(this.type) && other.contact.equals(this.contact);
   }
 
   public String toString()
   {
-    //    placeholder
-    return "";
+    return type + ": " + contact;
   }
 }

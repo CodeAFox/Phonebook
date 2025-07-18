@@ -8,7 +8,9 @@ public class Person
   private Address permanent;
   private Address temporary;
 
-  public Person(){}
+  public Person()
+  {
+  }
 
   public Person(String name, int age, int Id)
   {
@@ -69,13 +71,28 @@ public class Person
 
   public boolean equals(Object obj)
   {
-    //    placeholder
-    return true;
+    if (obj == this)
+    {
+      return true;
+    }
+    if (obj == null || obj.getClass() != this.getClass())
+    {
+      return false;
+    }
+
+    Person other = (Person) obj;
+
+    return other.name.equals(this.name) && other.age == this.age
+        && other.Id == this.Id && other.permanent.equals(this.permanent)
+        && other.temporary.equals(this.temporary);
   }
 
   public String toString()
   {
-    //    placeholder
-    return "";
+    if(temporary == null)
+    {
+      return "Name: " + name + "\nAge: " + age + "\nPermanent residence:\n" + permanent.toString();
+    }
+    return "Name: " + name + "\nAge: " + age + "\nPermanent residence:\n" + permanent.toString() + "\nTemporary residence:\n" + temporary.toString();
   }
 }

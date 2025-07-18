@@ -50,13 +50,28 @@ public class Address
 
   public boolean equals(Object obj)
   {
-    //    placeholder
-    return true;
+    if(obj == this)
+    {
+      return true;
+    }
+    if(obj == null || obj.getClass() != this.getClass())
+    {
+      return false;
+    }
+
+    Address other = (Address) obj;
+    return other.address.equals(this.address) && other.contacts.containsAll(this.contacts);
   }
 
   public String toString()
   {
-    //    placeholder
-    return "";
+    String contactList = "";
+
+    for (int i = 0; i < contacts.size(); i++)
+    {
+      contactList = contactList.concat(contacts.get(i) + "\n");
+    }
+
+    return "Address: " + address + "\nList of Contacts:\n";
   }
 }
