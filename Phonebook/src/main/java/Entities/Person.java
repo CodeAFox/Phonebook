@@ -5,6 +5,8 @@ public class Person
   private String name;
   private int age;
   private int Id;
+  private Address permanent;
+  private Address temporary;
 
   public Person(){}
 
@@ -30,6 +32,16 @@ public class Person
     this.Id = Id;
   }
 
+  public void setPermanentAddress(Address permanent)
+  {
+    this.permanent = permanent;
+  }
+
+  public void setTemporaryAddress(Address temporary)
+  {
+    this.temporary = temporary;
+  }
+
   public String getName()
   {
     return name;
@@ -43,5 +55,15 @@ public class Person
   public int getId()
   {
     return Id;
+  }
+
+  public Address getPermanentAddress()
+  {
+    return permanent;
+  }
+
+  public Address getTemporaryAddress()
+  {
+    return temporary;
   }
 }
