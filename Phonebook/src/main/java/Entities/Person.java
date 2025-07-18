@@ -66,4 +66,16 @@ public class Person
   {
     return temporary;
   }
+
+  public boolean equals(Object obj)
+  {
+    //    placeholder
+    return true;
+  }
+
+  public String toString()
+  {
+    //    placeholder
+    return "";
+  }
 }

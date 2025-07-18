@@ -48,4 +48,15 @@ public class Address
     return contacts.remove(contacts.indexOf(contact));
   }
 
+  public boolean equals(Object obj)
+  {
+    //    placeholder
+    return true;
+  }
+
+  public String toString()
+  {
+    //    placeholder
+    return "";
+  }
 }
