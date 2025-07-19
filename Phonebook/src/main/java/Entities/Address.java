@@ -12,10 +12,10 @@ public class Address
   {
   }
 
-  public Address(String address, ArrayList<ContactInfo> contacts)
+  public Address(String address)
   {
     this.address = address;
-    this.contacts = new ArrayList<>(contacts);
+    this.contacts = new ArrayList<>();
   }
 
   public void setAddress(String address)
