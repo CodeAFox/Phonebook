@@ -3,6 +3,7 @@ package Entities;
 public class ContactInfo
 {
   private String type;
+//  Something to format contacts so that they are uniform could be nice?
   private String contact;
 
   public ContactInfo(){}
