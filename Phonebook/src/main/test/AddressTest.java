@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AddressTest
 {
-  Address addressTest;
+  private Address addressTest;
   @BeforeEach
   public void setUp()
   {
