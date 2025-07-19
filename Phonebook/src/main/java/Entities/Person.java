@@ -12,11 +12,18 @@ public class Person
   {
   }
 
-  public Person(String name, int age, int Id)
+  public Person(String name, int age, int Id, Address permanent)
   {
     this.name = name;
     this.age = age;
     this.Id = Id;
+
+    //Everyone needs at least one address, temporary is not necessary
+    if(permanent == null)
+    {
+      throw new NullPointerException("Permanent address cannot be null");
+    }
+    this.permanent = permanent;
   }
 
   public void setName(String name)
@@ -36,6 +43,11 @@ public class Person
 
   public void setPermanentAddress(Address permanent)
   {
+    //Everyone needs at least one address
+    if(permanent == null)
+    {
+      throw new NullPointerException("Permanent address cannot be null");
+    }
     this.permanent = permanent;
   }
 
