@@ -1,5 +1,5 @@
-import Entities.Address;
-import Entities.ContactInfo;
+import application.main.Entities.Address;
+import application.main.Entities.ContactInfo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
