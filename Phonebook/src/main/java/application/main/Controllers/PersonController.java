@@ -22,14 +22,14 @@ public class PersonController
   {
     try
     {
-      personService.createPerson(person);
+      Person created = personService.createPerson(person);
+      return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
     //Placeholder, perhaps specify later on
     catch (Exception e)
     {
       return new ResponseEntity<>(null, HttpStatus.CONFLICT);
     }
-    return new ResponseEntity<>(person, HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
