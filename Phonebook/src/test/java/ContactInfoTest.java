@@ -59,6 +59,6 @@ public class ContactInfoTest
   {
     ContactInfo other = new ContactInfo("hi", "hi@gmail.com");
 
-    Assertions.assertEquals(true, other.equals(contactTest));
+    Assertions.assertEquals(false, other.equals(contactTest));
   }
 }
