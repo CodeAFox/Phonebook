@@ -32,7 +32,7 @@ public class AddressDAO extends DatabaseHandlerFactory implements IAddressDAO
       throw new RuntimeException("Issue getting singleton instance of AddressDAO");
     }
   }
-  @Override public Address createAddress(Address address, int personId)
+  @Override public synchronized Address createAddress(Address address, int personId)
   {
     try(Connection connection = super.establishConnection())
     {
@@ -105,7 +105,7 @@ public class AddressDAO extends DatabaseHandlerFactory implements IAddressDAO
     }
   }
 
-  @Override public Address updateAddress(Address address)
+  @Override public synchronized Address updateAddress(Address address)
   {
     try(Connection connection = super.establishConnection())
     {
@@ -123,7 +123,7 @@ public class AddressDAO extends DatabaseHandlerFactory implements IAddressDAO
     }
   }
 
-  @Override public Address deleteAddress(int addressId)
+  @Override public synchronized Address deleteAddress(int addressId)
   {
     try(Connection connection = super.establishConnection())
     {
