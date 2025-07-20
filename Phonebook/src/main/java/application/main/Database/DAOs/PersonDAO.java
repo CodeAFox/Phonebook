@@ -30,7 +30,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
     catch (SQLException e)
     {
-      throw new RuntimeException("Issue getting singleton instance of PersonDAO");
+      throw new RuntimeException("Issue getting singleton instance of PersonDAO: " + e.getMessage());
     }
   }
   @Override public synchronized Person createPerson(Person person)
@@ -55,7 +55,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
     catch (SQLException e)
     {
-      throw new RuntimeException("Something went wrong while creating an entry for a person in the database.");
+      throw new RuntimeException("Something went wrong while creating an entry for a person in the database: " + e.getMessage());
     }
   }
 
@@ -79,7 +79,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
     catch (SQLException e)
     {
-      throw new RuntimeException("Something went wrong while fetching the data of the person with id " + Id);
+      throw new RuntimeException("Something went wrong while fetching the data of the person with id " + Id + ": " + e.getMessage());
     }
   }
 
@@ -104,7 +104,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
     catch (SQLException e)
     {
-      throw new RuntimeException("Could not connect to database while retrieving information for people stored in the database.");
+      throw new RuntimeException("Could not connect to database while retrieving information for people stored in the database: " + e.getMessage());
     }
   }
 
@@ -122,7 +122,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
     catch (SQLException e)
     {
-      throw new RuntimeException("Something went wrong while trying to update the information of a person with id " + person.getId());
+      throw new RuntimeException("Something went wrong while trying to update the information of a person with id " + person.getId() + ": " + e.getMessage());
     }
   }
 
@@ -139,7 +139,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
     catch (SQLException e)
     {
-      throw new RuntimeException("Something went wrong while deleting person with id " + Id + " from the database.");
+      throw new RuntimeException("Something went wrong while deleting person with id " + Id + " from the database: " + e.getMessage());
     }
   }
 }
