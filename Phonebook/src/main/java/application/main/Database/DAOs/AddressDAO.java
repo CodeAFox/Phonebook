@@ -105,6 +105,30 @@ public class AddressDAO extends DatabaseHandlerFactory implements IAddressDAO
     }
   }
 
+  @Override public ArrayList<Address> getAllAddressesForPerson(int personId)
+  {
+    try(Connection connection = super.establishConnection())
+    {
+      ArrayList<Address> allAddresses = new ArrayList<>();
+
+      PreparedStatement statement = connection.prepareStatement("select address.address, address.type, address.address_id from phonebook.address where person_id = ?;");
+      statement.setInt(1, personId);
+      ResultSet rs = statement.executeQuery();
+
+      while (rs.next())
+      {
+        allAddresses.add(new Address(rs.getString("address"), rs.getString("type"),
+            rs.getInt("address_id")));
+      }
+
+      return allAddresses;
+    }
+    catch (SQLException e)
+    {
+      throw new RuntimeException("Something went wrong while fetching all addresses from the database: " + e.getMessage());
+    }
+  }
+
   @Override public synchronized Address updateAddress(Address address)
   {
     try(Connection connection = super.establishConnection())
