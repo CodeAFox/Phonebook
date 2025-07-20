@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Address
 {
   private String address;
+  private String type;
+  private int addressId;
   private ArrayList<ContactInfo> contacts = new ArrayList<>();
 
   public Address()
@@ -17,9 +19,27 @@ public class Address
     this.contacts = new ArrayList<>();
   }
 
+  public Address(String address, String type, int addressId)
+  {
+    this.address = address;
+    this.type = type;
+    this.addressId = addressId;
+    this.contacts = new ArrayList<>();
+  }
+
   public void setAddress(String address)
   {
     this.address = address;
+  }
+
+  public void setType(String type)
+  {
+    this.type = type;
+  }
+
+  public void setAddressId(int addressId)
+  {
+    this.addressId = addressId;
   }
 
   public void setContacts(ArrayList<ContactInfo> contacts)
@@ -40,6 +60,16 @@ public class Address
   public ArrayList<ContactInfo> getContacts()
   {
     return new ArrayList<>(contacts);
+  }
+
+  public String getType()
+  {
+    return type;
+  }
+
+  public int getAddressId()
+  {
+    return addressId;
   }
 
   public ContactInfo removeContact(ContactInfo contact)
