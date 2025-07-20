@@ -1,7 +1,6 @@
-package Entities;
+package application.main.Entities;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Address
 {
