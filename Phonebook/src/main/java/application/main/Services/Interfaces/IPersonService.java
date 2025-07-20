@@ -1,10 +1,10 @@
-package Controllers.Interfaces;
+package application.main.Services.Interfaces;
 
-import Entities.Person;
+import application.main.Entities.Person;
 
 import java.util.ArrayList;
 
-public interface IPersonController
+public interface IPersonService
 {
   public Person addPerson();
   public Person getPerson(int Id);
