@@ -33,7 +33,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
       throw new RuntimeException("Issue getting singleton instance of PersonDAO");
     }
   }
-  @Override public Person createPerson(Person person)
+  @Override public synchronized Person createPerson(Person person)
   {
     try(Connection connection = super.establishConnection())
     {
@@ -108,7 +108,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
   }
 
-  @Override public Person updatePerson(Person person)
+  @Override public synchronized Person updatePerson(Person person)
   {
     try(Connection connection = super.establishConnection())
     {
@@ -126,7 +126,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
     }
   }
 
-  @Override public SimplePersonDTO deletePerson(int Id)
+  @Override public synchronized SimplePersonDTO deletePerson(int Id)
   {
     try(Connection connection = super.establishConnection())
     {
