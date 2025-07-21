@@ -37,7 +37,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
   {
     try(Connection connection = super.establishConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("insert into phonebook.people(name, age) values (?, ?);");
+      PreparedStatement statement = connection.prepareStatement("insert into phonebook.people(name, age) values (?, ?);", Statement.RETURN_GENERATED_KEYS);
       statement.setString(1, person.getName());
       statement.setInt(2, person.getAge());
       statement.executeUpdate();
@@ -45,7 +45,7 @@ public class PersonDAO extends DatabaseHandlerFactory implements IPersonDAO
       ResultSet generatedKeys = statement.getGeneratedKeys();
       if(generatedKeys.next())
       {
-        person.setId(generatedKeys.getInt("id"));
+        person.setId(generatedKeys.getInt(1));
       }
       else
       {

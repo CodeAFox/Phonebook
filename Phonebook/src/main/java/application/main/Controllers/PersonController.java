@@ -11,13 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/people")
 public class PersonController
 {
   IPersonService personService = new PersonService();
-  @PostMapping("/")
+  @PostMapping
   public ResponseEntity<Person> createPerson(@RequestBody Person person)
   {
     try
@@ -25,9 +26,9 @@ public class PersonController
       Person created = personService.createPerson(person);
       return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
-    //Placeholder, perhaps specify later on
     catch (Exception e)
     {
+      e.printStackTrace();
       return new ResponseEntity<>(null, HttpStatus.CONFLICT);
     }
   }
@@ -40,14 +41,19 @@ public class PersonController
       Person person = personService.getPerson(id);
       return new ResponseEntity<>(person, HttpStatus.OK);
     }
-    //Need more specific error handling for when person under id cannot be found
+    catch (NoSuchElementException f)
+    {
+      f.printStackTrace();
+      return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
     catch (Exception e)
     {
+      e.printStackTrace();
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity<ArrayList<Person>> getAllPeople()
   {
     try
@@ -57,11 +63,12 @@ public class PersonController
     }
     catch (Exception e)
     {
+      e.printStackTrace();
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
-  @PutMapping("/")
+  @PutMapping
   public ResponseEntity<Person> updatePerson(@RequestBody Person person)
   {
     try
@@ -69,8 +76,14 @@ public class PersonController
       Person updated = personService.updatePerson(person);
       return new ResponseEntity<>(updated, HttpStatus.OK);
     }
+    catch (NoSuchElementException f)
+    {
+      f.printStackTrace();
+      return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
     catch (Exception e)
     {
+      e.printStackTrace();
       return new ResponseEntity<>(null, HttpStatus.NOT_MODIFIED);
     }
   }
@@ -85,6 +98,7 @@ public class PersonController
     }
     catch (Exception e)
     {
+      e.printStackTrace();
       return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
   }

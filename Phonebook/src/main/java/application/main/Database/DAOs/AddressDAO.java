@@ -36,7 +36,7 @@ public class AddressDAO extends DatabaseHandlerFactory implements IAddressDAO
   {
     try(Connection connection = super.establishConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("insert into phonebook.address(address, person_id, type) values (?, ?, ?);");
+      PreparedStatement statement = connection.prepareStatement("insert into phonebook.address(address, person_id, type) values (?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
       statement.setString(1, address.getAddress());
       statement.setInt(2, personId);
       statement.setString(3, address.getType());
@@ -45,7 +45,7 @@ public class AddressDAO extends DatabaseHandlerFactory implements IAddressDAO
       ResultSet generatedKeys = statement.getGeneratedKeys();
       if(generatedKeys.next())
       {
-        address.setAddressId(generatedKeys.getInt("address_id"));
+        address.setAddressId(generatedKeys.getInt(1));
       }
       else
       {

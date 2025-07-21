@@ -17,7 +17,7 @@ public class ContactInfoDAO extends DatabaseHandlerFactory implements IContactIn
     DriverManager.registerDriver(new SQLServerDriver());
   }
 
-  private static synchronized ContactInfoDAO getInstance()
+  public static synchronized ContactInfoDAO getInstance()
   {
     try
     {
@@ -107,6 +107,7 @@ public class ContactInfoDAO extends DatabaseHandlerFactory implements IContactIn
 
       PreparedStatement statement = connection.prepareStatement("select contact\n"
           + "from phonebook.address_contacts where address_id = ?;");
+      statement.setInt(1, addressId);
       ResultSet rs = statement.executeQuery();
 
       while (rs.next())
